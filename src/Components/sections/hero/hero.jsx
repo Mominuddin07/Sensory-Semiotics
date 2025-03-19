@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 export default function Hero() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   useEffect(() => {
     // Particle effect for the background
     const createParticle = () => {
@@ -24,19 +22,10 @@ export default function Hero() {
       }
     }
 
-    // Scroll position handler
-    const handleScroll = () => {
-      const position = window.pageYOffset;
-      setScrollPosition(position);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
     return () => {
       if (particleContainer) {
         particleContainer.innerHTML = '';
       }
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
