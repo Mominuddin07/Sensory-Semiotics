@@ -320,21 +320,21 @@ const TextSign = () => {
       {/* Main Content Section */}
       <section className="relative min-h-screen flex items-center pt-24 -ml-12 z-10">
         <div className="relative max-w-7xl w-full mx-auto px-3">
-          <div className="flex flex-row items-start justify-between gap-8">
+          <div className="flex flex-row items-start justify-between gap-4 sm:gap-8">
             {/* Text input section */}
-            <div className="w-full md:w-1/3 flex flex-col justify-start">
+            <div className="w-full sm:w-1/3 flex flex-col justify-start">
               <div id="text-to-sign" className="m-2">
-                <div className="relative group mb-8">
+                <div className="relative group mb-4 sm:mb-8">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0F9B8E] to-[#16DAC7] blur-2xl opacity-20 rounded-xl group-hover:opacity-30 transition-opacity duration-300"></div>
-                  <div className="relative bg-[#1A1A2E]/80 rounded-xl p-6 border border-[#0F9B8E]/20">
+                  <div className="relative bg-[#1A1A2E]/80 rounded-xl p-4 sm:p-6 border border-[#0F9B8E]/20">
                     <div className="flex items-center">
-                      <h1 className="text-xl font-bold text-white mb-4 mx-2 flex items-center">
+                      <h1 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 mx-2 flex items-center">
                         Text to Sign
                       </h1>
-                      <SlSpeech className="mb-4 text-[#16DAC7]" />
+                      <SlSpeech className="mb-2 sm:mb-4 text-[#16DAC7]" />
                     </div>
                     <textarea
-                      className="w-full p-4 rounded-lg bg-[#1A1A2E] border border-[#0F9B8E]/30 text-gray-100 focus:border-[#16DAC7] focus:ring-2 focus:ring-[#0F9B8E]/20 transition-all duration-300"
+                      className="w-full p-3 sm:p-4 rounded-lg bg-[#1A1A2E] border border-[#0F9B8E]/30 text-gray-100 focus:border-[#16DAC7] focus:ring-2 focus:ring-[#0F9B8E]/20 transition-all duration-300 text-sm sm:text-base"
                       placeholder="Type text here..."
                       value={text}
                       onChange={handleTextChange}
@@ -344,16 +344,16 @@ const TextSign = () => {
 
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-[#0F9B8E] to-[#16DAC7] blur-2xl opacity-20 rounded-xl group-hover:opacity-30 transition-opacity duration-300"></div>
-                  <div className="relative bg-[#1A1A2E]/80 rounded-xl p-6 border border-[#0F9B8E]/20">
+                  <div className="relative bg-[#1A1A2E]/80 rounded-xl p-4 sm:p-6 border border-[#0F9B8E]/20">
                     <div className="flex items-center">
-                      <h1 className="text-xl font-bold text-white mb-4 mx-2 flex items-center">
+                      <h1 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-4 mx-2 flex items-center">
                         Speech to Sign
                       </h1>
-                      <FaMicrophone className="mb-4 text-[#16DAC7]" />
+                      <FaMicrophone className="mb-2 sm:mb-4 text-[#16DAC7]" />
                     </div>
                     <textarea
                       disabled
-                      className="w-full p-4 rounded-lg bg-[#1A1A2E]/50 border border-[#0F9B8E]/30 text-gray-400 cursor-not-allowed"
+                      className="w-full p-3 sm:p-4 rounded-lg bg-[#1A1A2E]/50 border border-[#0F9B8E]/30 text-gray-400 cursor-not-allowed text-sm sm:text-base"
                       placeholder="Coming soon..."
                     />
                   </div>
@@ -362,7 +362,7 @@ const TextSign = () => {
             </div>
 
             {/* Canvas section */}
-            <div className="w-full md:w-2/3">
+            <div className="w-full sm:w-2/3">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-[#0F9B8E] to-[#16DAC7] rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                 <div className="relative bg-[#1A1A2E]/80 rounded-xl overflow-hidden p-1">
