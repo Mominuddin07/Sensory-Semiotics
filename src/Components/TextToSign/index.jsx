@@ -95,20 +95,48 @@ const TextSign = () => {
     spotLight.position.set(0, 5, 5);
     ref.scene.add(spotLight);
 
+    // Calculate responsive dimensions
+    const isMobile = window.innerWidth < 768;
+    const aspectRatio = isMobile ? 16 / 9 : (window.innerWidth * 0.57) / (window.innerHeight - 70);
+
     ref.camera = new THREE.PerspectiveCamera(
       30,
-      (window.innerWidth * 0.57) / (window.innerHeight - 70),
+      aspectRatio,
       0.1,
       1000
     );
 
     ref.renderer = new THREE.WebGLRenderer({ antialias: true });
-    ref.renderer.setSize(window.innerWidth * 0.57, window.innerHeight - 70);
+    ref.renderer.setSize(
+      isMobile ? window.innerWidth : window.innerWidth * 0.57,
+      isMobile ? window.innerWidth * (9/16) : window.innerHeight - 70
+    );
     document.getElementById("canvas").innerHTML = "";
     document.getElementById("canvas").appendChild(ref.renderer.domElement);
 
-    ref.camera.position.z = 1.6;
-    ref.camera.position.y = 1.4;
+    // Adjust camera position only for mobile
+    ref.camera.position.z = isMobile ? 2.0 : 1.6;
+    ref.camera.position.y = isMobile ? 1.6 : 1.4;
+
+    // Add window resize handler
+    const handleResize = () => {
+      const newIsMobile = window.innerWidth < 768;
+      const newAspectRatio = newIsMobile ? 16 / 9 : (window.innerWidth * 0.57) / (window.innerHeight - 70);
+
+      ref.camera.aspect = newAspectRatio;
+      ref.camera.updateProjectionMatrix();
+
+      ref.renderer.setSize(
+        newIsMobile ? window.innerWidth : window.innerWidth * 0.57,
+        newIsMobile ? window.innerWidth * (9/16) : window.innerHeight - 70
+      );
+
+      // Adjust camera position only for mobile
+      ref.camera.position.z = newIsMobile ? 2.0 : 1.6;
+      ref.camera.position.y = newIsMobile ? 1.6 : 1.4;
+    };
+
+    window.addEventListener('resize', handleResize);
 
     let loader = new GLTFLoader();
     loader.load(
@@ -127,6 +155,10 @@ const TextSign = () => {
         console.log(xhr);
       }
     );
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [ref, bot]);
 
   ref.animate = () => {
@@ -172,6 +204,19 @@ const TextSign = () => {
       ref.animations.shift();
     }
     ref.renderer.render(ref.scene, ref.camera);
+  };
+
+  const handleTextChange = (e) => {
+    const inputText = e.target.value.toUpperCase().replace(/[^A-Z]/g, "");
+    setText(inputText);
+    
+    if (inputText.length > 0) {
+      const latestCharacter = inputText.charAt(inputText.length - 1);
+      // Check if the animation function exists before calling it
+      if (alphabets[latestCharacter] && typeof alphabets[latestCharacter] === 'function' && ref.animations.length === 0) {
+        alphabets[latestCharacter](ref);
+      }
+    }
   };
 
   let alphaButtons = [];
@@ -292,18 +337,7 @@ const TextSign = () => {
                       className="w-full p-4 rounded-lg bg-[#1A1A2E] border border-[#0F9B8E]/30 text-gray-100 focus:border-[#16DAC7] focus:ring-2 focus:ring-[#0F9B8E]/20 transition-all duration-300"
                       placeholder="Type text here..."
                       value={text}
-                      onChange={(e) => {
-                        console.log(e.target.value);
-                        const text = e.target.value
-                          .toUpperCase()
-                          .replace(/[^A-Z]/g, "");
-                        setText(text);
-                        const latestCharacter = text.charAt(text.length - 1); // Get the latest character
-                        console.log(latestCharacter);
-                        if (ref.animations.length === 0) {
-                          alphabets[latestCharacter](ref);
-                        }
-                      }}
+                      onChange={handleTextChange}
                     />
                   </div>
                 </div>
