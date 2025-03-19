@@ -104,14 +104,6 @@ export default function Navbar() {
 
             {/* Feature buttons */}
             <div className="space-y-4 pt-4 border-t border-gray-700">
-              <Link to="/sign-to-text" 
-                className="block w-full group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#0F9B8E] to-[#16DAC7] p-0.5 text-sm font-medium hover:scale-105 transform transition-all duration-300"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <span className="block rounded-lg bg-white px-4 py-2 transition-all duration-300 ease-out group-hover:bg-opacity-0 text-gray-900 group-hover:text-white">
-                  Sign To Text
-                </span>
-              </Link>
               <Link to="/text-to-sign" 
                 className="block w-full group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A2E] to-[#16DAC7] p-0.5 text-sm font-medium hover:scale-105 transform transition-all duration-300"
                 onClick={() => setIsMobileMenuOpen(false)}
