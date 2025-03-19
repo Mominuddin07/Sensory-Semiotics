@@ -18,9 +18,9 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const TextSign = () => {
-  const [bot, setBot] = useState(ybot);
-  const [speed, setSpeed] = useState(0.1);
-  const [pause, setPause] = useState(200);
+  const [bot] = useState(ybot);
+  const [speed] = useState(0.1);
+  const [pause] = useState(200);
   const [text, setText] = useState("");
   const componentRef = useRef({});
   const { current: ref } = componentRef;
@@ -188,7 +188,7 @@ const TextSign = () => {
   let wordButtons = [];
   for (let i = 0; i < words.wordList.length; i++) {
     wordButtons.push(
-      <div className="col-md-4">
+      <div className="col-md-4" key={i}>
         <button
           className="signs w-100 m-3"
           onClick={() => {
