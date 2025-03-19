@@ -7,7 +7,7 @@ export default function ModalVideo({
   thumbHeight,
   thumbAlt,
   video,
-  videoWidth,
+  videoWidth, 
   videoHeight,
 }) {
   const [modalOpen, setModalOpen] = useState(false)

@@ -4,7 +4,6 @@ import Home from './Pages/Home';
 import TextToSign from './Pages/TextToSign';
 import Navbar from './Components/navbar/navbar';
 import Footer from './Components/Footer';
-import Hero from './Components/sections/hero/hero';
 import Learn from './Pages/Learn';
 
 

@@ -1,5 +1,3 @@
-import VideoThumb from '../../../Assets/images/videothumb.png'
-import ModalVideo from '../../../Components/modal-video.jsx'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
@@ -151,9 +149,6 @@ export default function Hero() {
                 Transform sign language into text and vice versa instantly. Experience seamless communication with cutting-edge AI technology.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <div data-aos="fade-up" data-aos-delay="400">
-                  
-                </div>
                 <div data-aos="fade-up" data-aos-delay="600">
                   <Link to="/text-to-sign" 
                     className="w-full sm:w-auto btn group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1A2E] to-[#16DAC7] p-0.5 text-base font-medium hover:scale-105 transform transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#0F9B8E]/50">

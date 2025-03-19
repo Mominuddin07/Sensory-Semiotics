@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Slider from "react-input-slider";
+
 import { SlSpeech } from "react-icons/sl";
 import { FaMicrophone } from "react-icons/fa";
 import { driver } from "driver.js";
@@ -8,10 +8,7 @@ import "driver.js/dist/driver.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'font-awesome/css/font-awesome.min.css';
 
-import xbot from "../../Models/xbot/xbot.glb";
 import ybot from "../../Models/ybot/ybot.glb";
-import xbotPic from "../../Models/xbot/xbot.png";
-import ybotPic from "../../Models/ybot/ybot.png";
 
 import * as words from "../../Animations/words";
 import * as alphabets from "../../Animations/alphabets";
